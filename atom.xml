@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-19T13:54:12.650Z</updated>
+  <updated>2019-05-20T03:17:59.466Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node 基础模块</title>
+    <link href="http://yoursite.com/2019/05/20/node-js/"/>
+    <id>http://yoursite.com/2019/05/20/node-js/</id>
+    <published>2019-05-20T02:54:12.000Z</published>
+    <updated>2019-05-20T03:17:59.466Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Node-运行-js文件（PS：安装好了node）&quot;&gt;&lt;a href=&quot;#Node-运行-js文件（PS：安装好了node）&quot; class=&quot;headerlink&quot; title=&quot;Node 运行 js文件（PS：安装好了node）&quot;&gt;&lt;/a&gt;Node 运行
+        
+      
+    
+    </summary>
+    
+    
+      <category term="node" scheme="http://yoursite.com/tags/node/"/>
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

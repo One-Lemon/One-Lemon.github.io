@@ -299,6 +299,13 @@
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
+    <div id="prev-cover" class="left waves-effect carousel-control">
+        <i class="icon fa fa-angle-left"></i>
+    </div>
+    <div id="next-cover" class="right waves-effect carousel-control">
+        <i class="icon fa fa-angle-right"></i>
+    </div>
+    
 
     <div class="carousel-item red white-text bg-cover about-cover">
         <div class="container">
@@ -330,15 +337,19 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
 
                 
-                <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light btn" target="_blank">
+                <a href="https://github.com/one-lemon" class="waves-effect waves-light btn" target="_blank">
                     <i class="fa fa-github-alt"></i>Github
                 </a>
                 
             </div>
             <div class="cover-social-link">
+    <a href="https://github.com/one-lemon" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
 
-    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+
+    <a href="mailto:qq982516861@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fa fa-envelope-open"></i>
     </a>
 
@@ -357,6 +368,41 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         </div>
     </div>
 
+    
+    
+
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover" style="background-image: url('/images/1.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">node 基础模块</div>
+                    <div class="description center-align">
+                    
+                        Node 运行 js文件（PS：安装好了node）
+在vscode中随便写一段js代码
+
+var x = 200;
+console.log('mr的x的值为：' + x);
+
+
+在vscode中打开终端
+
+node ./mr.js
+引入模块
+                    
+                    </div>
+                    <div class="cover-btns">
+                        <a href="/2019/05/20/node-js/" class="waves-effect waves-light btn" target="_blank">
+                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     
 </div>
 
@@ -447,7 +493,7 @@ $(function () {
 $(function () {
     new APlayer({
         container: document.getElementById('aplayer'),
-        fixed: 'false' === 'true',
+        fixed: 'true' === 'true',
         autoplay: 'false' === 'true',
         theme: '#42b983',
         loop: 'all',
@@ -469,6 +515,39 @@ $(function () {
 
 
 
+
+
+<div class="title"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;推荐文章</div>
+
+<div class="row">
+
+    
+    
+    <div class="col s12">
+        <div class="post-card" style="background-image: url('/source/images/xxx.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                </div>
+                <a href="/2019/05/20/node-js/" target="_blank">
+                    <h3 class="post-title">node 基础模块</h3>
+                </a>
+                <p class="post-description">Node 运行 js文件（PS：安装好了node）
+在vscode中随便写一段js代码
+
+var x = 200;
+console.log('mr的x的值为：' + x)</p>
+                <a href="/2019/05/20/node-js/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
+
                     </div>
                 </div>
             </div>
@@ -481,6 +560,62 @@ $(function () {
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/05/20/node-js/">
+                        <div class="card-image">
+                            
+                            <img src="/source/images/xxx.jpg" class="responsive-img" alt="node 基础模块">
+                            
+                            <span class="card-title">node 基础模块</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Node 运行 js文件（PS：安装好了node）
+在vscode中随便写一段js代码
+
+var x = 200;
+console.log('mr的x的值为：' + x);
+
+
+在vscode中打开终端
+
+node ./mr.js
+引入模块
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-user fa-fw"></i>
+                                One Lemon
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/node/" target="_blank">
+                            <span class="chip bg-color">node</span>
+                        </a>
+                        
+                        <a href="/tags/js/" target="_blank">
+                            <span class="chip bg-color">js</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
@@ -527,13 +662,13 @@ $(function () {
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            本站由&copy;<a href="https://github.com/one-lemon" target="_blank">One Lemon</a>基于
             <a href="https://hexo.io/" target="_blank">Hexo</a> 的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">73</span>
+                <span class="white-color">120</span>
             
 
             
@@ -554,9 +689,13 @@ $(function () {
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/one-lemon" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
 
-    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+
+    <a href="mailto:qq982516861@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fa fa-envelope-open"></i>
     </a>
 
