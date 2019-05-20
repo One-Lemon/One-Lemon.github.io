@@ -163,7 +163,7 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, skyblue 100%);
+    background-image: linear-gradient(to right, #5963c7 0%, #4084B3 100%);
 }
 
 .text-color {
