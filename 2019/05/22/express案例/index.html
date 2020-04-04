@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    express案例 |
+    
+    Hexo</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-express案例" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      express案例
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/05/22/express%E6%A1%88%E4%BE%8B/" class="article-date">
+  <time datetime="2019-05-22T05:05:06.000Z" itemprop="datePublished">2019-05-22</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="通过-express-框架实现简单的小案例"><a href="#通过-express-框架实现简单的小案例" class="headerlink" title="通过 express 框架实现简单的小案例"></a>通过 express 框架实现简单的小案例</h1><h2 id="需要用到的工具"><a href="#需要用到的工具" class="headerlink" title="需要用到的工具"></a>需要用到的工具</h2><ul>
+<li><p><a href="https://insomnia.rest/download/" target="_blank" rel="noopener">Insomnia</a> 模拟发送请求的工具</p>
+</li>
+<li><p><a href="https://robomongo.org/download" target="_blank" rel="noopener">Robo 3T</a> 操作 <a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">mongodb</a> 数据库的可视化工具(PS：安装数据库最后左下角不要勾选)</p>
+</li>
+<li><p>express 框架</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -<span class="literal">-save</span> express</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了能够更好地浏览功能层次，我将文件夹的目录创建如下：</p>
+<p><img src="/medias/images/path.png" alt="目录"></p>
+<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="案例流程"><a href="#案例流程" class="headerlink" title="案例流程"></a>案例流程</h2><ol>
+<li><p>创建 server.js 文件</p>
+<ul>
+<li><p>这里需要先了解<code>userRouter</code>和中间件</p>
+</li>
+<li><p>POST 请求的数据，将会在<code>req.body</code>中使用</p>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>); <span class="comment">//引入模块</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> app = express(); <span class="comment">//实例化对象</span></span><br><span class="line"><span class="keyword">const</span> userRouter = <span class="built_in">require</span>(<span class="string">"./routes/user"</span>); <span class="comment">//引入分离的路由文件</span></span><br><span class="line"><span class="comment">//中间件	POST请求数据以JSON输出，否则会得到undefined</span></span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(</span><br><span class="line">	express.urlencoded(&#123;</span><br><span class="line">		extended: <span class="literal">false</span>,</span><br><span class="line">	&#125;)</span><br><span class="line">);</span><br><span class="line">app.use(<span class="string">"/api"</span>, userPouter);</span><br><span class="line">app.listen(<span class="number">4444</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"服务启动成功，请访问http://localhost:4444"</span>);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在 routes 文件夹中创建 user.js<ul>
+<li>分离代码，使框架更加清晰，将回调函数存放在<code>controller/userCtrl</code></li>
+<li>访问地址是<code>http://localhost:4444/api/reg/</code>进入注册页面</li>
+<li>如果代码不暴露，即使调用了该文件，也不能直接调用内容方法</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"><span class="keyword">const</span> UserCtrl = <span class="built_in">require</span>(<span class="string">"../controller/userCtrl"</span>);</span><br><span class="line">router.post(<span class="string">"/reg"</span>, UserCtrl.reg);</span><br><span class="line"><span class="built_in">module</span>.exports = router; <span class="comment">//暴露  用于server.js使用</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在 controller 文件夹中创建 userCtrl.js<ul>
+<li>主要是存放不同操作的回调函数</li>
+<li>这里需要和数据库交互，所以要引入<code>model/user</code></li>
+<li>bcrypt 是加密模块，用于加密用户密码 <code>npm i bcrypt</code></li>
+<li>findOne 返回的是 promise，所以使用 then()，并且根据返回的数据，如果查询到该用户名在数据库中存在的话 data 不为空，报错给前端，结束注册请求</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> UserModel = <span class="built_in">require</span>(<span class="string">'../model/user'</span>);</span><br><span class="line"><span class="keyword">const</span> bcrypt = <span class="built_in">require</span>(<span class="string">'bcrypt'</span>);</span><br><span class="line"><span class="keyword">const</span> reg = <span class="function">(<span class="params">req, res</span>)=&gt;</span>&#123;	<span class="comment">//用户注册</span></span><br><span class="line">    <span class="keyword">let</span> name = req.body.username;	<span class="comment">//获取用户名，和数据库进行对比</span></span><br><span class="line">    UserModel.findOne(&#123;	<span class="comment">//mongodb数据库查询语句</span></span><br><span class="line">        username: name</span><br><span class="line">    &#125;).then(data)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(data)&#123;</span><br><span class="line">            res.send(&#123;<span class="attr">code</span>: <span class="number">-1</span>, <span class="attr">msg</span>: <span class="string">'用户名存在，请更换用户名'</span>&#125;);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//对象的assign方法来更新对象中的password数据</span></span><br><span class="line">     	<span class="keyword">let</span> body = <span class="built_in">Object</span>.assign(&#123;&#125;, req.body, &#123;</span><br><span class="line">            <span class="comment">//密码进行哈希加密</span></span><br><span class="line">            password: bcrypt.hashSync(req.body.password, <span class="number">10</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">let</span> user = <span class="keyword">new</span> UserModel(body);	<span class="comment">//实例化对象</span></span><br><span class="line">        user.save().then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            res.send(&#123;<span class="attr">code</span>: <span class="number">0</span>, msg&#125;)</span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(err.message);</span><br><span class="line">            res.send(&#123;<span class="attr">code</span>: <span class="number">-1</span>,  <span class="attr">msg</span>: <span class="string">'注册失败'</span> &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><code>model/user.js</code>和<code>config/db.js</code> 分别是对进行表操作和数据库连接<ul>
+<li>在<code>model/user.js</code>引入 db.js ，相当于在连接数据库基础上进行表的操作</li>
+<li>因为某些原因，这里操作的是 user ，实际操作的是 users 表</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">'../config/db'</span>);</span><br><span class="line"><span class="keyword">const</span> schema = <span class="keyword">new</span> dbSchema(&#123;	<span class="comment">//这里是表的字段名和要求</span></span><br><span class="line">    username: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        required: <span class="literal">true</span>	<span class="comment">//设置用户名为必填项</span></span><br><span class="line">    &#125;，</span><br><span class="line">    password: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        required: <span class="literal">true</span>	<span class="comment">//设置用户名为必填项</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">module</span>.exports = db.model(<span class="string">'user'</span>, schema);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">"mongodb://localhost:27017/apple"</span>;</span><br><span class="line">mongoose</span><br><span class="line">	.connect(url, &#123;</span><br><span class="line">		useNewUrlParser: <span class="literal">true</span>,</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"数据库连接成功"</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">		consolelog(<span class="string">"数据库连接失败"</span>, error.message);</span><br><span class="line">	&#125;);</span><br><span class="line"><span class="built_in">module</span>.exports = mongoose;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><ol>
+<li><p>在终端中输入<code>nodemon server.js</code>启动服务</p>
+</li>
+<li><p>在 Insomnia 中进行 POST 请求<img src="/medias/images/POST.png" alt="POST"></p>
+</li>
+</ol>
+<hr>
+<p>Tips：一个简单的用户注册就完成了，用户登录以及修改等操作也可以照葫芦画瓢，最重要还是要了解流程</p>
+<p><a href="https://github.com/One-Lemon/express-demo" target="_blank" rel="noopener">github 案例仓库</a></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/05/22/express%E6%A1%88%E4%BE%8B/" data-id="ck8l0k1yi0000jgul4dnz2s98" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/" rel="tag">demo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2019/05/27/Vue%E5%85%A5%E9%97%A8%E5%B8%B8%E8%AF%86/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            Vue 入门知识
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/05/20/node-js/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">node 基础模块</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '823ec907ca8a419f4e85',
+      clientSecret: '2acb1f1b57621816952ad9608f29ad560637bce1',
+      repo: 'gitalk',
+      owner: 'One-Lemon',
+      admin: ['One-Lemon'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Hexo</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Hexo"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">Links</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+</body>
+</html>

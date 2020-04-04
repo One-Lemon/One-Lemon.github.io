@@ -23,7 +23,8 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
 
 <body>
 <main class="content">
@@ -120,6 +121,332 @@
                                             Share
                                         </a>
                                         
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Vue入门常识" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/05/27/Vue%E5%85%A5%E9%97%A8%E5%B8%B8%E8%AF%86/">Vue 入门知识</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/05/27/Vue%E5%85%A5%E9%97%A8%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time datetime="2019-05-27T06:40:57.000Z" itemprop="datePublished">2019-05-27</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Vue-入门知识"><a href="#Vue-入门知识" class="headerlink" title="Vue 入门知识"></a>Vue 入门知识</h1><blockquote>
+<p>vue 是什么？</p>
+<p>构建用户界面的渐进式框架    MVVM </p>
+<p>原理：ObjectdefinePropety 修改属性的get，set方法，作为 vue 的核心，是通过 Observer,Dep,Watcher,Complie 四个类以及 CpompileUtil</p>
+<p><a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">vue</a> 下载地址</p>
+</blockquote>
+<h2 id="Vue-基础语法"><a href="#Vue-基础语法" class="headerlink" title="Vue 基础语法"></a>Vue 基础语法</h2><h3 id="基本使用步骤"><a href="#基本使用步骤" class="headerlink" title="基本使用步骤"></a>基本使用步骤</h3><ol>
+<li><p>下载并且引入 Vue.js</p>
+</li>
+<li><p>实例化一个对象  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#box'</span>,	<span class="comment">//挂载点  你需要操作的节点</span></span><br><span class="line">    data:&#123;</span><br><span class="line">        msg:<span class="string">'hello vue'</span></span><br><span class="line">    &#125;,	<span class="comment">//存放的数据</span></span><br><span class="line">    methods:&#123;	<span class="comment">//绑定事件的函数存放处</span></span><br><span class="line">        fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;     </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>差值语法 <code></code>，可以是数据、 JS 表达式</p>
+</li>
+</ol>
+<h3 id="dom元素内添加属性"><a href="#dom元素内添加属性" class="headerlink" title="dom元素内添加属性"></a>dom元素内添加属性</h3><ul>
+<li><p>事件的绑定 <code>v-on:click = &#39;fn&#39;</code> 简写： <code>@click</code></p>
+</li>
+<li><p>属性的绑定 <code>v-bind:title = &#39;msg&#39;</code> 简写： <code>:title</code></p>
+<blockquote>
+<p>类似于 Jquery 的 attr 方法，例：你要绑定一个链接到百度，那么你可以使用 <code>:href = &#39;url&#39;</code>，然后在 Vue的实例对象中的 data 中添加 <code>url:&#39;http://www.baiducom&#39;</code></p>
+</blockquote>
+</li>
+<li><p>双向绑定 <code>v-model = &#39;msg&#39;</code> \</p>
+<blockquote>
+<p>在挂载点中添加文本框，然后使用该绑定方法，那么 msg 的值会随着文本框的内容改变，反之，文本框的内容也会随着 msg 的值变化</p>
+</blockquote>
+</li>
+<li><p>单次变化，默认绑定一次，后续数据更新不会重新改变 <code>v-once</code></p>
+</li>
+<li><p>解析 HTML ，使用 <code>v-html</code> =&gt; 尽量少用，防止 XSS 攻击</p>
+</li>
+</ul>
+<h3 id="在-Vue-的实例中选项"><a href="#在-Vue-的实例中选项" class="headerlink" title="在 Vue 的实例中选项"></a>在 Vue 的实例中选项</h3><ul>
+<li>el 对应的是 dom 节点 ， 还可以使用 vue 的实例对象.$mout() 设置挂载点</li>
+<li>methods 绑定事件的方法存放处</li>
+<li>data 存放的数据</li>
+<li>computed =&gt; 计算属性</li>
+<li>watch 监听器 </li>
+</ul>
+<p>Tips：v-cloak vue 定义的属性，能解决页面闪烁跳动的效果 </p>
+<blockquote>
+<p>在 css 样式中使用属性选择器来选定 v-clock 设置属性为 <code>display:none</code> </p>
+</blockquote>
+<h3 id="Vue常用指令-（通常以-v-开头，用在元素的标签上面，借鉴-angluar）"><a href="#Vue常用指令-（通常以-v-开头，用在元素的标签上面，借鉴-angluar）" class="headerlink" title="Vue常用指令  （通常以  v- 开头，用在元素的标签上面，借鉴 angluar）"></a>Vue常用指令  （通常以  v- 开头，用在元素的标签上面，借鉴 angluar）</h3><ul>
+<li><p>v-if 类似于 JS 当中的判断，如果对应的属性为真时显示内容，为假时改节点都不会在 F12 中存在，控制 dom 的存在与否</p>
+</li>
+<li><p>v-show 和 v-if 也是能隐藏节点 但是他和 v-if 有不同的地方，首先 v-if 是通过删除和创建 dom 的方式，而 v-show 则是使用 <code>display:none</code> 控制消失和显示，控制 dom 的显示与否</p>
+</li>
+<li><p>v-for 循环一组数据来渲染 dom 结构</p>
+<p>如果在 v-for 没有给循环的每一项设置一个唯一标识符，那么后续这个数据发生变化，页面重新渲染，浪费性能</p>
+</li>
+</ul>
+<p>Tips：了解 v-bind:[attrname]  /  修饰符 . </p>
+<h3 id="Vue-数据的检测"><a href="#Vue-数据的检测" class="headerlink" title="Vue 数据的检测"></a>Vue 数据的检测</h3><ul>
+<li><p>数组：使用一些变异方法或者直接替换数据都能引起页面的更新。但是以下两个操作不会：</p>
+<ol>
+<li>直接根据数据下标来修改</li>
+<li>直接修改数据的长度</li>
+</ol>
+<p>解决方法：使用 Vue.set 原型方法或者使用 vm.$set 实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(target, index, value)；</span><br><span class="line">Vm.$<span class="keyword">set</span>(target, index, value)；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象：Vue 不能检测对象属性的添加或删除 ，添加解决方法同上 index 为 key 值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.delete(target,key);<span class="comment">//删除对象属性</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/05/27/Vue%E5%85%A5%E9%97%A8%E5%B8%B8%E8%AF%86/" data-id="ck8l0k222000bjgul7dj75io6" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-express案例" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/05/22/express%E6%A1%88%E4%BE%8B/">express案例</a>
+    </h2>
+  
+  
+  <div class="article-topping">
+    <i class="fe fe-umbrella"></i>
+  </div>
+
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/05/22/express%E6%A1%88%E4%BE%8B/" class="article-date">
+  <time datetime="2019-05-22T05:05:06.000Z" itemprop="datePublished">2019-05-22</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                    <h1 id="通过-express-框架实现简单的小案例"><a href="#通过-express-框架实现简单的小案例" class="headerlink" title="通过 express 框架实现简单的小案例"></a>通过 express 框架实现简单的小案例</h1><h2 id="需要用到的工具"><a href="#需要用到的工具" class="headerlink" title="需要用到的工具"></a>需要用到的工具</h2><ul>
+<li><p><a href="https://insomnia.rest/download/" target="_blank" rel="noopener">Insomnia</a> 模拟发送请求的工具</p>
+</li>
+<li><p><a href="https://robomongo.org/download" target="_blank" rel="noopener">Robo 3T</a> 操作 <a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">mongodb</a> 数据库的可视化工具(PS：安装数据库最后左下角不要勾选)</p>
+</li>
+<li><p>express 框架</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -<span class="literal">-save</span> express</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了能够更好地浏览功能层次，我将文件夹的目录创建如下：</p>
+<p><img src="/medias/images/path.png" alt="目录"></p>
+                                                        
+                                                            <a class="article-more-link" href="/2019/05/22/express%E6%A1%88%E4%BE%8B/">
+                                                                阅读全文
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/05/22/express%E6%A1%88%E4%BE%8B/" data-id="ck8l0k1yi0000jgul4dnz2s98" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/" rel="tag">demo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-node-js" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/05/20/node-js/">node 基础模块</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/05/20/node-js/" class="article-date">
+  <time datetime="2019-05-20T02:54:12.000Z" itemprop="datePublished">2019-05-20</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h2 id="node-运行-js文件（PS：安装好了node）"><a href="#node-运行-js文件（PS：安装好了node）" class="headerlink" title="node 运行 js文件（PS：安装好了node）"></a>node 运行 js文件（PS：安装好了node）</h2><ul>
+<li>在vscode中随便写一段js代码</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">200</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'mr的x的值为：'</span> + x);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在vscode中打开终端</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node ./mr.js</span><br></pre></td></tr></table></figure>
+
+<h2 id="fs模块使用"><a href="#fs模块使用" class="headerlink" title="fs模块使用"></a>fs模块使用</h2><ol>
+<li><p>在JS文件中先引入模块 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用模块中的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'./test.txt'</span>, (err, data)=&gt;&#123;</span><br><span class="line">       <span class="keyword">if</span>(err)&#123;	<span class="comment">//如果存在异常，报错</span></span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;	<span class="comment">//正常执行输出内容</span></span><br><span class="line">           <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>bug1：cannot find module    注意路径</p>
+</li>
+<li><p>bug2：乱码    输出内容忘记添加toString方法</p>
+</li>
+</ul>
+<h2 id="http模块的使用"><a href="#http模块的使用" class="headerlink" title="http模块的使用"></a>http模块的使用</h2></li>
+<li><p>在JS文件中引入模块（这一步是万年不变的，）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建服务以及逻辑（server中可以更根据不同的需求进行逻辑判断）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.url);	<span class="comment">//终端中打印出地址 favicon.icon忽略</span></span><br><span class="line">    res.write(<span class="string">'123456'</span>)；<span class="comment">//页面中输出</span></span><br><span class="line">    res.end()<span class="comment">//结束</span></span><br><span class="line">&#125;)</span><br><span class="line">server.lister(<span class="number">4242</span>);	<span class="comment">//自定义端口号  开启服务</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务已开启，请访问http://localhost:4242'</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="express模块"><a href="#express模块" class="headerlink" title="express模块"></a>express模块</h2><blockquote>
+<p>高度包容、快速而极简的 <a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a> Web 框架</p>
+<p>在http模块中如果深入使用，你会发现许多得问题，例如get和post请求的不同，文件路径的改变。</p>
+<p>监听文件变化，修改代码自动重启服务，降低重复操作</p>
+</blockquote>
+<ol>
+<li><p>使用方法还是先引入模块（省略，参考上面）</p>
+</li>
+<li><p>实例化对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = express();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>请求方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.all(<span class="string">'/'</span>, (req, res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> _url = url.parse(req.url);	<span class="comment">//需加入url模块</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'访问量+1'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(_url.query);	<span class="comment">//获取到url中的参数</span></span><br><span class="line">    res.send(<span class="string">'hello node js'</span>);	<span class="comment">//等价于res.write和res.end</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署静态文件托管</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/'</span>, express.static(path.resolve(__dirname,<span class="string">'./public'</span>)));</span><br><span class="line">app.listen(<span class="number">4242</span>);	<span class="comment">//监听服务</span></span><br><span class="line"><span class="built_in">console</span>.lg(<span class="string">'服务开启，请访问http://localhost:4000'</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="输出结果（PS：参数是我在地址自己加的）"><a href="#输出结果（PS：参数是我在地址自己加的）" class="headerlink" title="输出结果（PS：参数是我在地址自己加的）"></a>输出结果（PS：参数是我在地址自己加的）</h3><p><img src="C:%5CUsers%5Clemon%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558355610640.png" alt="1558355610640"></p>
+<h3 id="node-模块的时候基本都是异曲同工，需要的是能看懂API手册"><a href="#node-模块的时候基本都是异曲同工，需要的是能看懂API手册" class="headerlink" title="node 模块的时候基本都是异曲同工，需要的是能看懂API手册"></a>node 模块的时候基本都是异曲同工，需要的是能看懂API手册</h3><h2 id="思考：app-all和app-use有什么区别"><a href="#思考：app-all和app-use有什么区别" class="headerlink" title="思考：app.all和app.use有什么区别?"></a>思考：app.all和app.use有什么区别?</h2><blockquote>
+<p>类似于app.METHOD的路由请求 。</p>
+<p>参数：path    路径，callback    回调函数</p>
+</blockquote>
+<p>结合API文档以及实际操作得出的区别</p>
+<ul>
+<li><p>use通常是作为中间件使用的    例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/a'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'访问量+1'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>此时可以接受匹配到/a所有的请求 /a/b也可以。<img src="C:%5CUsers%5Clemon%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558357897282.png" alt="1558357897282"></p>
+</li>
+<li><p>all是以具体的路由    例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.all(<span class="string">'/a'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'访问量+1'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>可以接受/a get ，/a post 等，但是不能路由/a/b。</p>
+</li>
+</ul>
+<h3 id="总结：use是中间件，可以路由以path开头的所有请求，但是all是具体的路由，无法路由下级地址的请求。"><a href="#总结：use是中间件，可以路由以path开头的所有请求，但是all是具体的路由，无法路由下级地址的请求。" class="headerlink" title="总结：use是中间件，可以路由以path开头的所有请求，但是all是具体的路由，无法路由下级地址的请求。"></a>总结：use是中间件，可以路由以path开头的所有请求，但是all是具体的路由，无法路由下级地址的请求。</h3>
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/05/20/node-js/" data-id="ck8l0k1z00007jgul7x838ds1" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
+
                                     </footer>
 
     </div>
