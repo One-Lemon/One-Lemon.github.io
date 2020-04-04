@@ -1,0 +1,58 @@
+# Menu
+menu:
+  Home: /
+  Archives: /archives
+  Gallery: /gallery
+  About: /about
+  Links: /links
+rss: /atom.xml
+
+# Miscellaneous
+favicon: /favicon.ico
+brand: /images/hexo.svg
+
+# Ocean Video
+# Because I put videos in multiple formats on the same path, I just labeled the path here.
+ocean:
+  overlay: true
+  path: /images/ocean/
+  brand: /images/hexo-inverted.svg
+
+# Content
+excerpt_link: 阅读全文
+
+# Tags
+show_count: true
+
+# Toc
+toc: true
+
+# fancybox
+fancybox: true
+
+# Gitalk
+gitalk:
+  enable: true # true
+  clientID: 823ec907ca8a419f4e85 # GitHub Application Client ID
+  clientSecret: 2acb1f1b57621816952ad9608f29ad560637bce1 # Client Secret
+  repo: gitalk # Repository name
+  owner: One-Lemon # GitHub ID
+  admin: One-Lemon # GitHub ID
+
+# Valine
+valine:
+  enable: false # true
+  el: "vcomments"
+  appId:
+  appKey:
+  notify: false
+  verify: true
+  avatar: "mp"
+  pageSize: "10"
+  placeholder: "请输入..."
+
+# Katex Support
+katex:
+  enable: false # true
+  allpost:
+  copy_tex:
