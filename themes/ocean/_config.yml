@@ -1,10 +1,10 @@
 # Menu
 menu:
-  Home: /
-  Archives: /archives
-  Gallery: /gallery
-  About: /about
-  Links: /links
+  首页: /
+  归档: /archives
+  相册: /gallery
+  关于: /about
+  链接: /links
 rss: /atom.xml
 
 # Miscellaneous
@@ -36,8 +36,8 @@ gitalk:
   clientID: 823ec907ca8a419f4e85 # GitHub Application Client ID
   clientSecret: 2acb1f1b57621816952ad9608f29ad560637bce1 # Client Secret
   repo: gitalk # Repository name
-  owner: One-Lemon # GitHub ID
-  admin: One-Lemon # GitHub ID
+  owner: oneQiu # GitHub ID
+  admin: oneQiu # GitHub ID
 
 # Valine
 valine:

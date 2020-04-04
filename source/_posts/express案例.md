@@ -25,10 +25,11 @@ tags:
   npm i --save express
   ```
 
+  <!-- more -->
+
 - 为了能够更好地浏览功能层次，我将文件夹的目录创建如下：
 
   ![目录](/medias/images/path.png)
-  <!-- more -->
 
 ## 案例流程
 
