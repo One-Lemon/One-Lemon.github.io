@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ""
-description: ""
-keywords:
-author: John Doe
-language: en
-timezone: ""
+title: "oneQiu Blog"
+subtitle: "静待一树花开，盼你叶落归来。"
+description: "静待一树花开，盼你叶落归来。"
+keywords: "JavaScript,Vue,React,小程序,前端,Node"
+author: oneQiu
+language: zh-CN
+timezone: "Asia/Shanghai"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -47,7 +47,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ""
   wrap: true
   hljs: false
@@ -99,7 +99,7 @@ theme: ocean
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: "git"
-  repo: "https://github.com/One-Lemon/one-lemon.github.io.git"
+  repo: "https://github.com/oneQiu/oneQiu.github.io.git"
   branch: "master"
 
 # 搜索功能
