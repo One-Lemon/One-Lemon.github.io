@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="JavaScript,Vue,React,小程序,前端,Node">
+  
+  
+    <meta name="description" content="静待一树花开，盼你叶落归来。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Vue CLI |
+    
+    oneQiu Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="oneQiu Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-vue-小案例" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Vue CLI
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2018/07/03/vue-%E5%B0%8F%E6%A1%88%E4%BE%8B/" class="article-date">
+  <time datetime="2018-07-03T12:27:51.000Z" itemprop="datePublished">2018-07-03</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Vue-CLI-简单的小案例"><a href="#Vue-CLI-简单的小案例" class="headerlink" title="Vue CLI 简单的小案例"></a>Vue CLI 简单的小案例</h1><blockquote>
+<p>Vue CLI 也叫做脚手架工具，前端中一定会用到打包工具 webpakck 但是繁琐的配置问题让人十分头疼，但是 Vue CLI 提供了很好的快速打包配置功能。有着丰富的官方插件，并且还有图形化的创建和管理 Vue 项目的用户界面，可以说真的是 webpack 手残党的福星。</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p><strong>Node 版本要求</strong></p>
+<p>Vue CLI 需要 <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> 8.9 或更高版本 (推荐 8.11.0+)。你可以使用 <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a> 或 <a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="noopener">nvm-windows</a> 在同一台电脑中管理多个 Node 版本。</p>
+</blockquote>
+<p>使用以下命令行进行安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br><span class="line"><span class="comment"># 如果你是用的是 yarn</span></span><br><span class="line">yarn global add @add/cli</span><br></pre></td></tr></table></figure>
+
+<p>如何测试自己是否安装成功：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="命令方式"><a href="#命令方式" class="headerlink" title="命令方式"></a>命令方式</h3><ol>
+<li><p>通过以下命令创建一个 Vue 项目：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create vue-demo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择一个配置的预设方案（回车确键认下一步）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue CLI v3.8.2</span><br><span class="line">? Please pick a preset:    <span class="comment"># 选择预设方案</span></span><br><span class="line">&gt; hello-config (less, babel, eslint)	<span class="comment"># 我之前就配置好并且保存的，后面会遇到的。</span></span><br><span class="line">  default (babel, eslint)	<span class="comment"># 默认设置 </span></span><br><span class="line">  Manually select features	<span class="comment"># 手动选择，这里我们选择这个(你也可以使用默认设置)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手动选择预设功能（空格键选择，<code>a</code>键全选）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Vue CLI v3.8.2</span><br><span class="line">? Please pick a preset: Manually select features	<span class="comment"># 选择预设</span></span><br><span class="line">? Check the features needed <span class="keyword">for</span> your project: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line">&gt;(*) Babel	<span class="comment"># ES6 转 ES5 </span></span><br><span class="line"> ( ) TypeScript	<span class="comment"># 支持 TypeScript</span></span><br><span class="line"> ( ) Progressive Web App (PWA) Support	<span class="comment"># 支持 PWA 应用程序</span></span><br><span class="line"> ( ) Router	<span class="comment"># 路由</span></span><br><span class="line"> ( ) Vuex	<span class="comment"># Vue 程序开发的状态管理模式</span></span><br><span class="line"> (*) CSS Pre-processors	<span class="comment"># CSS 预处理器 </span></span><br><span class="line"> (*) Linter / Formatter	<span class="comment"># 规范化语法(魔鬼) </span></span><br><span class="line"> ( ) Unit Testing	<span class="comment"># 单元测试</span></span><br><span class="line"> ( ) E2E Testing	<span class="comment"># E2E 测试</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后就是对相应的预设功能做一些选择，<code>eslint</code> 选择 <code>ESLint + Standard config</code> 标准设置，config 选择 <code>In dedicated config files</code>，也可以按照你自己的喜好来，这里只是我的设置。之后会提示你是否保存，保存为 xxx 预设名。</p>
+</li>
+</ol>
+<h3 id="图形化界面"><a href="#图形化界面" class="headerlink" title="图形化界面"></a>图形化界面</h3><blockquote>
+<p>通过 <code>vue ui</code> 的命令进入图形化页面创建和管理项目，具体步骤和上面差不多，而且是图形化很容易就不说了。</p>
+</blockquote>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2018/07/03/vue-%E5%B0%8F%E6%A1%88%E4%BE%8B/" data-id="cka9546zz0008s0ulfhni7g44" class="article-share-link">
+                                            分享
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/" rel="tag">demo</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2018/07/06/Vuex/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            Vuex
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/07/01/vue-router/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">Vue-router</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '823ec907ca8a419f4e85',
+      clientSecret: '2acb1f1b57621816952ad9608f29ad560637bce1',
+      repo: 'gitalk',
+      owner: 'oneQiu',
+      admin: ['oneQiu'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 oneQiu Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="oneQiu Blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">链接</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+  
+  {% include '_third-party/comments/index.swig' %}
+  <script type="text/javascript" src="./js/clicklove.js"></script>
+  <script type="text/javascript" src="./js/snow.js"></script>
+  <!--彩带2.自动飘动-->
+  
+</body>
+
+</html>

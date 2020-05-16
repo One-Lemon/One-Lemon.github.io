@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="JavaScript,Vue,React,小程序,前端,Node">
+  
+  
+    <meta name="description" content="静待一树花开，盼你叶落归来。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Vue-router |
+    
+    oneQiu Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="oneQiu Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-vue-router" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Vue-router
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2018/07/01/vue-router/" class="article-date">
+  <time datetime="2018-07-01T02:04:32.000Z" itemprop="datePublished">2018-07-01</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Vue-router"><a href="#Vue-router" class="headerlink" title="Vue-router"></a>Vue-router</h1><blockquote>
+<p>创建单页应用，是非常简单的，<strong>这里的路由就是SPA（单页应用）的路径管理器。</strong></p>
+</blockquote>
+<h2 id="Vue-router-的使用"><a href="#Vue-router-的使用" class="headerlink" title="Vue-router 的使用"></a>Vue-router 的使用</h2><ol>
+<li><p>安装 <code>npm i vue-router</code>。</p>
+</li>
+<li><p>在 <code>src</code> 目录下创建 <code>router</code> 文件夹，并创建 <code>index.js</code> 对其进行路由的配置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span>	<span class="comment">//引入vue-router模块</span></span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;	<span class="comment">//实例化路由对象</span></span><br><span class="line">    routes: [</span><br><span class="line">        &#123;</span><br><span class="line">            path: <span class="string">'/index'</span>,	<span class="comment">//路径匹配</span></span><br><span class="line">            component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'../views/index.vue'</span>)	<span class="comment">//懒加载，组件位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router	<span class="comment">//暴露</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>在 <code>main.js</code> 中引入并且加入 Vue 实例中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    router,</span><br><span class="line">    render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li>使用组件 <code>&lt;router-view&gt;&lt;/router-view&gt;</code>，通过这个组件可以嵌套路由。</li>
+</ol>
+<h2 id="router-link-和-router-view"><a href="#router-link-和-router-view" class="headerlink" title="router-link 和 router-view"></a>router-link 和 router-view</h2><blockquote>
+<p><code>router-link</code> 是个全局组件，类似于 a标签。to 属性：hash地址，类似于 a 标签的 <code>href</code>。</p>
+<p><code>router-view</code> 路由嵌套。</p>
+</blockquote>
+<h2 id="动态路由匹配"><a href="#动态路由匹配" class="headerlink" title="动态路由匹配"></a>动态路由匹配</h2><blockquote>
+<p>使用了 <code>vue-router</code> 以后，在 vue 的实例中添加了 <code>$route</code> 和 <code>$router</code> 两个对象。</p>
+<p><code>$route</code> ：当前匹配的路由对象信息，可以获得跳转来自、目的路径、参数等信息传递<br><code>$router</code> ： 路由器的实例对象，可以进行编程式导航。</p>
+</blockquote>
+<h3 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h3><blockquote>
+<p>简单的来说，就是通过 JS 代码进行跳转。</p>
+</blockquote>
+<h3 id="使用-router-对象调用方法进行导航"><a href="#使用-router-对象调用方法进行导航" class="headerlink" title="使用 $router 对象调用方法进行导航"></a>使用 <code>$router</code> 对象调用方法进行导航</h3><ul>
+<li><p>push()    跳转页面 新增一个历史记录，该方法接受参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.push(<span class="string">'index'</span>)	<span class="comment">//router中配置的name</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'index'</span> &#125;)</span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'index'</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="string">'123'</span> &#125;&#125;)</span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'index'</span>, <span class="attr">query</span>: &#123; <span class="attr">userId</span>: <span class="string">'123'</span> &#125;&#125;)	<span class="comment">// 带查询参数，变成 /index?userId=123</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>back()    后退</p>
+</li>
+<li><p>forward()    前进</p>
+</li>
+<li><p>go()    根据参数前进还是后退，正数前进，负数后退</p>
+</li>
+<li><p>replace()    跳转页面 重定向页面 不加历史记录，使用方法和 push 方法相同，通常使用在登录之类</p>
+</li>
+</ul>
+<p><strong>注：name 和 params 搭配 相当于 POST 请求，参数需要通过 $route 获取，name 不能和path使用，path和query搭配 相当于 GET 请求。</strong></p>
+<h1 id="路由的两种模式"><a href="#路由的两种模式" class="headerlink" title="路由的两种模式"></a>路由的两种模式</h1><blockquote>
+<p><code>router</code> 下的 <code>index.js</code> 中的 <code>router</code> 实例中添加 <code>model: &#39;history&#39;</code></p>
+</blockquote>
+<ul>
+<li><p>hash 默认模式</p>
+<p>使用 URL 的 hash 来模拟完整的 URL ，所以当 URL 发生改变的时候，页面不会重新加载，也不会 404 报错，就是外观上略丑。</p>
+</li>
+<li><p>histroy 模式<br>利用了 HTML5 History Interface 中新增的 <code>pushState()</code> 和 <code>replaceState()</code> 方法，模拟出真实的 URL 路径，但是一刷新就会 404 报错，因为重新请求这个 URL 对应的地址是不存在的，所以需要后台配置相关的路由处理。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2></li>
+</ul>
+<ol>
+<li>hash模式会在 URL 地址上会有一个 # 号，histroy 没有。</li>
+<li>原理上，hash通过 <code>window.onHashChage</code>  这个事件来处理，histroy 基于 HTML5 中 histroy 新增的一些 `api. histroy.pushState(),api.histroy.replaceState(),window.onpoopstat 。</li>
+<li>histroy 需要后台配合处理上线的 404 问题。<h1 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h1></li>
+</ol>
+<blockquote>
+<p>当我们路由发生改变的时候，可以通过导航守卫做我们想做的。</p>
+</blockquote>
+<ul>
+<li><p>全局守卫</p>
+<ul>
+<li><p>全局前置  <code>beforeEach()</code> 接收三个参数<br>  to    要去的路由<br>  from    来自哪个路由<br>  next    是否执行 ‘to’ ，直接调用那就相当于放行，如果传递一个false，那么就不放行，不调用不放行，调用并且里面可以传递路由的path路径或者是路由的对象信息，那么就可以重定向我们的参数中所指定的位置。</p>
+</li>
+<li><p>全局解析守卫 <code>beforeResolve</code></p>
+</li>
+<li><p>全局后置   <code>afterEach()</code><br>没有 <code>next</code> 参数</p>
+</li>
+</ul>
+</li>
+<li><p>路由独享</p>
+<pre><code>`beforeRouteEnter`：进入当前组件，**不能访问this，因为此时组件还没被创建**
+`beforeRouteUpdate`：当前组件更新
+`beforeRouteLeave`：离开当前组件</code></pre></li>
+<li><p>组件级别</p>
+<h3 id="导航守卫的钩子函数"><a href="#导航守卫的钩子函数" class="headerlink" title="导航守卫的钩子函数"></a>导航守卫的钩子函数</h3></li>
+</ul>
+<blockquote>
+<p>路由发生变化时候主动触发的一些函数</p>
+</blockquote>
+<h3 id="作用场景"><a href="#作用场景" class="headerlink" title="作用场景"></a>作用场景</h3><ol>
+<li><code>beforeEach,afterEach</code> 实现页面进度条</li>
+<li>登录拦截</li>
+</ol>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2018/07/01/vue-router/" data-id="cka9546zx0007s0uld5bd0kg7" class="article-share-link">
+                                            分享
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2018/07/03/vue-%E5%B0%8F%E6%A1%88%E4%BE%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            Vue CLI
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/06/29/Vue-%E7%BB%84%E4%BB%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">Vue 组件</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '823ec907ca8a419f4e85',
+      clientSecret: '2acb1f1b57621816952ad9608f29ad560637bce1',
+      repo: 'gitalk',
+      owner: 'oneQiu',
+      admin: ['oneQiu'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 oneQiu Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="oneQiu Blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">链接</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+  
+  {% include '_third-party/comments/index.swig' %}
+  <script type="text/javascript" src="./js/clicklove.js"></script>
+  <script type="text/javascript" src="./js/snow.js"></script>
+  <!--彩带2.自动飘动-->
+  
+</body>
+
+</html>

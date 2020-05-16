@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="JavaScript,Vue,React,小程序,前端,Node">
+  
+  
+    <meta name="description" content="静待一树花开，盼你叶落归来。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Redux |
+    
+    oneQiu Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="oneQiu Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Redux" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Redux
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2018/09/24/Redux/" class="article-date">
+  <time datetime="2018-09-24T02:45:36.000Z" itemprop="datePublished">2018-09-24</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <ol>
+<li>引入 redux <code>import redux from &#39;redux&#39;</code></li>
+<li>创建 strore 实例对象 <code>const store = redux.createStore((state, action) =&gt; { return xxx })</code> 这个函数默认进来一次，可以做为仓库的初始化工作。</li>
+<li>暴露 store <code>export default store</code></li>
+</ol>
+<ul>
+<li>获取仓库中的数据 <code>store.getState().xxx</code></li>
+</ul>
+<h2 id="修改仓库的数据"><a href="#修改仓库的数据" class="headerlink" title="修改仓库的数据"></a>修改仓库的数据</h2><p><code>store.dispatch(action)</code> 派发一个动作</p>
+<h2 id="组件得到-store-改变之后修改自身数据"><a href="#组件得到-store-改变之后修改自身数据" class="headerlink" title="组件得到 store 改变之后修改自身数据"></a>组件得到 store 改变之后修改自身数据</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.subscribe()</span><br></pre></td></tr></table></figure>
+
+<p>Reducer 返回一个新的 state，真正修改的是 state</p>
+<h2 id="action-是什么？"><a href="#action-是什么？" class="headerlink" title="action 是什么？"></a>action 是什么？</h2><blockquote>
+<p>action 就是一个包含 type 和 value 的对象</p>
+</blockquote>
+<ul>
+<li><code>return Object.assign({}, state, { name: action.value })</code></li>
+<li><code>return { ...state, name: action.value }</code></li>
+<li><code>let newState = {...state};return newState</code></li>
+<li><code>let newState = JSON.parse(JSON.stringify(state))</code></li>
+</ul>
+<h2 id="action-创建函数"><a href="#action-创建函数" class="headerlink" title="action 创建函数"></a>action 创建函数</h2><h2 id="reducer-拆分"><a href="#reducer-拆分" class="headerlink" title="reducer 拆分"></a>reducer 拆分</h2><h2 id="ANTD"><a href="#ANTD" class="headerlink" title="ANTD"></a>ANTD</h2><h2 id="redux-中间件"><a href="#redux-中间件" class="headerlink" title="redux 中间件"></a>redux 中间件</h2><h3 id="redux-ogger"><a href="#redux-ogger" class="headerlink" title="redux-ogger"></a>redux-ogger</h3><h3 id="redyx-thunk"><a href="#redyx-thunk" class="headerlink" title="redyx-thunk"></a>redyx-thunk</h3><blockquote>
+<p>这个中间件的使用，让我们 <code>store.dispatch</code> 能支持接收到函数，以前只支持对象。</p>
+<p>闭包</p>
+<p>dom 对象  ie 低版本 内存泄漏</p>
+</blockquote>
+<h3 id="redux-promise"><a href="#redux-promise" class="headerlink" title="redux-promise"></a>redux-promise</h3><h3 id="redux-saga"><a href="#redux-saga" class="headerlink" title="redux-saga"></a>redux-saga</h3><h2 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h2><h3 id="UI-组件与容器组件"><a href="#UI-组件与容器组件" class="headerlink" title="UI 组件与容器组件"></a>UI 组件与容器组件</h3><h4 id="UI-组件（展示组件）"><a href="#UI-组件（展示组件）" class="headerlink" title="UI 组件（展示组件）"></a>UI 组件（展示组件）</h4><blockquote>
+<p>一般来说 UI 组件，只负责 UI 的渲染，不负责数据的情况，它不需要 state 数据，它上面的数据全是容器组件来通过 props 传递下来的。所以一般我们可以将 UI 组件写成 function 组件。</p>
+</blockquote>
+<h4 id="容器组件"><a href="#容器组件" class="headerlink" title="容器组件"></a>容器组件</h4><blockquote>
+<p>它麦处理数据，负责跟 redux 打交道。</p>
+</blockquote>
+<hr>
+<ul>
+<li><code>connect(mapStateToprops, mapDispatchToprops)(UI 组件)</code></li>
+<li>Provider 组件</li>
+</ul>
+<ol>
+<li><code>yarn add react-redux</code></li>
+<li>项目入口，使用 Provider 组件将 store 的数据 context 下去。</li>
+<li>实现 UI 组件，由 connect 帮我们去创建容器组件。</li>
+</ol>
+<h2 id="react-路由"><a href="#react-路由" class="headerlink" title="react 路由"></a>react 路由</h2><ul>
+<li>react-router                                Link</li>
+<li>react-router-dom（推荐） NavLink    高亮效果</li>
+</ul>
+<h3 id="提供的路由相关组件"><a href="#提供的路由相关组件" class="headerlink" title="提供的路由相关组件"></a>提供的路由相关组件</h3><ul>
+<li><p>路由组件（全局只能有一个）</p>
+<ul>
+<li><p>BrowserRouter        history模式</p>
+</li>
+<li><p>HashRouter                hash模式</p>
+</li>
+</ul>
+<p>表现形式不同    原理不同</p>
+</li>
+<li><p>单个的路由规则组件</p>
+<ul>
+<li>Route</li>
+</ul>
+</li>
+<li><p>全局路由</p>
+<ul>
+<li>Router</li>
+</ul>
+</li>
+<li><p>导航组件</p>
+<ul>
+<li>Link</li>
+<li>NavLink</li>
+</ul>
+</li>
+<li><p>只匹配一条规则</p>
+<ul>
+<li>Switch    从上往下渲染，只匹配第一条</li>
+</ul>
+</li>
+<li><p>Redirect</p>
+</li>
+<li><p>widthRouter    方法    高阶组件</p>
+</li>
+</ul>
+<h3 id="路由界面自动接收到的三个-prop，路由页面组件中的其他组件是获取不到的。"><a href="#路由界面自动接收到的三个-prop，路由页面组件中的其他组件是获取不到的。" class="headerlink" title="路由界面自动接收到的三个 prop，路由页面组件中的其他组件是获取不到的。"></a>路由界面自动接收到的三个 prop，路由页面组件中的其他组件是获取不到的。</h3><ul>
+<li>history<ul>
+<li><code>push()</code></li>
+<li><code>replace()</code></li>
+<li><code>go()</code></li>
+<li><code>goBack()</code></li>
+<li><code>goForward()</code></li>
+</ul>
+</li>
+<li>location<ul>
+<li>search  query 的参数</li>
+</ul>
+</li>
+<li>match<ul>
+<li>params 动态路由</li>
+</ul>
+</li>
+</ul>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2018/09/24/Redux/" data-id="cka9546zo0001s0ul8cgg608r" class="article-share-link">
+                                            分享
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/" rel="tag">Redux</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2019/05/29/bug/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            bug
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/09/23/React-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">React 生命周期</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '823ec907ca8a419f4e85',
+      clientSecret: '2acb1f1b57621816952ad9608f29ad560637bce1',
+      repo: 'gitalk',
+      owner: 'oneQiu',
+      admin: ['oneQiu'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 oneQiu Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="oneQiu Blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">链接</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+  
+  {% include '_third-party/comments/index.swig' %}
+  <script type="text/javascript" src="./js/clicklove.js"></script>
+  <script type="text/javascript" src="./js/snow.js"></script>
+  <!--彩带2.自动飘动-->
+  
+</body>
+
+</html>

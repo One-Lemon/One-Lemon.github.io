@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-04T05:18:58.759Z</updated>
+  <updated>2020-05-16T04:35:48.149Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,21 +17,345 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>express案例</title>
-    <link href="http://yoursite.com/2019/05/22/express%E6%A1%88%E4%BE%8B/"/>
-    <id>http://yoursite.com/2019/05/22/express%E6%A1%88%E4%BE%8B/</id>
-    <published>2019-05-22T05:05:06.000Z</published>
-    <updated>2020-04-04T05:18:58.759Z</updated>
+    <title>小程序奇葩坑点</title>
+    <link href="http://yoursite.com/2020/05/16/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9D%91/"/>
+    <id>http://yoursite.com/2020/05/16/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9D%91/</id>
+    <published>2020-05-16T04:40:28.307Z</published>
+    <updated>2020-05-16T04:35:48.149Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;通过-express-框架实现简单的小案例&quot;&gt;&lt;a href=&quot;#通过-express-框架实现简单的小案例&quot; class=&quot;headerlink&quot; title=&quot;通过 express 框架实现简单的小案例&quot;&gt;&lt;/a&gt;通过 express 框架实现简单的小案例&lt;/h1&gt;&lt;h2 id=&quot;需要用到的工具&quot;&gt;&lt;a href=&quot;#需要用到的工具&quot; class=&quot;headerlink&quot; title=&quot;需要用到的工具&quot;&gt;&lt;/a&gt;需要用到的工具&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://insomnia.rest/download/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Insomnia&lt;/a&gt; 模拟发送请求的工具&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://robomongo.org/download&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Robo 3T&lt;/a&gt; 操作 &lt;a href=&quot;https://www.mongodb.com/download-center/community&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mongodb&lt;/a&gt; 数据库的可视化工具(PS：安装数据库最后左下角不要勾选)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;express 框架&lt;/p&gt;
-&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm i -&lt;span class=&quot;literal&quot;&gt;-save&lt;/span&gt; express&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="微信小程序" scheme="http://yoursite.com/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+    
+      <category term="微信小程序" scheme="http://yoursite.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>思考时间</title>
+    <link href="http://yoursite.com/2019/05/31/%E6%80%9D%E8%80%83%E6%97%B6%E9%97%B4/"/>
+    <id>http://yoursite.com/2019/05/31/%E6%80%9D%E8%80%83%E6%97%B6%E9%97%B4/</id>
+    <published>2019-05-31T02:04:32.000Z</published>
+    <updated>2019-06-04T09:27:56.891Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>bug</title>
+    <link href="http://yoursite.com/2019/05/29/bug/"/>
+    <id>http://yoursite.com/2019/05/29/bug/</id>
+    <published>2019-05-29T03:26:22.000Z</published>
+    <updated>2019-06-21T00:42:36.382Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="bug" scheme="http://yoursite.com/tags/bug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redux</title>
+    <link href="http://yoursite.com/2018/09/24/Redux/"/>
+    <id>http://yoursite.com/2018/09/24/Redux/</id>
+    <published>2018-09-24T02:45:36.000Z</published>
+    <updated>2019-06-26T09:30:08.674Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="React" scheme="http://yoursite.com/tags/React/"/>
+    
+      <category term="Redux" scheme="http://yoursite.com/tags/Redux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React 生命周期</title>
+    <link href="http://yoursite.com/2018/09/23/React-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>http://yoursite.com/2018/09/23/React-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</id>
+    <published>2018-09-23T07:08:23.000Z</published>
+    <updated>2019-06-24T00:35:28.535Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="React" scheme="http://yoursite.com/tags/React/"/>
+    
+      <category term="生命周期" scheme="http://yoursite.com/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React基础</title>
+    <link href="http://yoursite.com/2018/08/17/React%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2018/08/17/React%E5%9F%BA%E7%A1%80/</id>
+    <published>2018-08-17T00:57:44.000Z</published>
+    <updated>2019-06-21T13:53:39.559Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="React" scheme="http://yoursite.com/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vuex</title>
+    <link href="http://yoursite.com/2018/07/06/Vuex/"/>
+    <id>http://yoursite.com/2018/07/06/Vuex/</id>
+    <published>2018-07-06T01:01:57.000Z</published>
+    <updated>2019-06-14T12:47:53.956Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue CLI</title>
+    <link href="http://yoursite.com/2018/07/03/vue-%E5%B0%8F%E6%A1%88%E4%BE%8B/"/>
+    <id>http://yoursite.com/2018/07/03/vue-%E5%B0%8F%E6%A1%88%E4%BE%8B/</id>
+    <published>2018-07-03T12:27:51.000Z</published>
+    <updated>2019-06-14T11:47:19.770Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="demo" scheme="http://yoursite.com/tags/demo/"/>
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue-router</title>
+    <link href="http://yoursite.com/2018/07/01/vue-router/"/>
+    <id>http://yoursite.com/2018/07/01/vue-router/</id>
+    <published>2018-07-01T02:04:32.000Z</published>
+    <updated>2019-06-14T11:46:26.391Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 组件</title>
+    <link href="http://yoursite.com/2018/06/29/Vue-%E7%BB%84%E4%BB%B6/"/>
+    <id>http://yoursite.com/2018/06/29/Vue-%E7%BB%84%E4%BB%B6/</id>
+    <published>2018-06-29T09:22:18.000Z</published>
+    <updated>2019-06-14T11:46:17.332Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue 基础知识2</title>
+    <link href="http://yoursite.com/2018/06/28/vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/"/>
+    <id>http://yoursite.com/2018/06/28/vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</id>
+    <published>2018-06-28T06:09:04.000Z</published>
+    <updated>2019-06-14T11:47:11.472Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 基础知识1</title>
+    <link href="http://yoursite.com/2018/06/27/Vue%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%861/"/>
+    <id>http://yoursite.com/2018/06/27/Vue%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%861/</id>
+    <published>2018-06-27T06:40:57.000Z</published>
+    <updated>2019-06-14T11:46:04.350Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>express案例</title>
+    <link href="http://yoursite.com/2018/05/22/express%E6%A1%88%E4%BE%8B/"/>
+    <id>http://yoursite.com/2018/05/22/express%E6%A1%88%E4%BE%8B/</id>
+    <published>2018-05-22T05:05:06.000Z</published>
+    <updated>2019-06-14T11:45:45.941Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
     
     </summary>
     
@@ -39,9 +363,36 @@
     
       <category term="express" scheme="http://yoursite.com/tags/express/"/>
     
-      <category term="node" scheme="http://yoursite.com/tags/node/"/>
-    
       <category term="demo" scheme="http://yoursite.com/tags/demo/"/>
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node 基础模块</title>
+    <link href="http://yoursite.com/2018/04/20/node-js/"/>
+    <id>http://yoursite.com/2018/04/20/node-js/</id>
+    <published>2018-04-20T02:54:12.000Z</published>
+    <updated>2019-06-15T00:29:50.014Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
     
   </entry>
   

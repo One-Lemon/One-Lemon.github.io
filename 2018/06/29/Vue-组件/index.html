@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="JavaScript,Vue,React,小程序,前端,Node">
+  
+  
+    <meta name="description" content="静待一树花开，盼你叶落归来。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Vue 组件 |
+    
+    oneQiu Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="oneQiu Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Vue-组件" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Vue 组件
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2018/06/29/Vue-%E7%BB%84%E4%BB%B6/" class="article-date">
+  <time datetime="2018-06-29T09:22:18.000Z" itemprop="datePublished">2018-06-29</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Vue-组件"><a href="#Vue-组件" class="headerlink" title="Vue 组件"></a>Vue 组件</h1><blockquote>
+<p>组件是 vue.js 最强大，也是最重要的功能之一。组件可以拓展 HTML 元素，并且对其进行封装重用的代码，提高代码的复用性。所有的 vue 组件同时也都是 vue 的实例。</p>
+</blockquote>
+<h2 id="怎么去注册组件？"><a href="#怎么去注册组件？" class="headerlink" title="怎么去注册组件？"></a>怎么去注册组件？</h2><h3 id="注册组件"><a href="#注册组件" class="headerlink" title="注册组件"></a>注册组件</h3><ul>
+<li><p>全局注册组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'组件名'</span>,&#123;<span class="string">'选项对象'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>组件对象是相当于 HTML 中的标签中使用，特别注意以下两点：</p>
+<ol>
+<li>全局注册的组件需要在 Vue 所在挂载点的实例之前，否则会出现组件未注册的报错。</li>
+<li>组件可以认为是 vue 的实例，但是选项对象中不能使用 <code>el</code> 和 <code>propsData</code></li>
+</ol>
+</li>
+<li><p>局部注册组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'组件名'</span>: &#123;</span><br><span class="line">            <span class="string">'选项对象'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>局部注册的可以在同一个 vue 实例中创建多个组件</p>
+</li>
+</ul>
+<h3 id="组件的选项对象"><a href="#组件的选项对象" class="headerlink" title="组件的选项对象"></a>组件的选项对象</h3><blockquote>
+<p>组件的选项对象中一定要有 <code>template</code> ，因为这是渲染到页面中的模板。组件可以认为是 vue 的实例，但是选项对象中不能使用 <code>el</code> 和 <code>propsData</code></p>
+</blockquote>
+<ul>
+<li><p><code>template</code>  </p>
+<p>组件的选项对象中需要用 <code>template:&quot;&lt;p&gt;组件&lt;/P&gt;&quot;</code> 选项去定义模板，而且可以使用模板字符串，但是有时候这种方法总显得很复杂，所以有几种方法供我们使用：</p>
+<ol>
+<li><p>直接使用 “ “ 或者 `` ，在模板字符串中你可以随意的换行，但是没有代码提示和高亮。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="string">`&lt;button&gt; 这是组件 &lt;/button&gt;`</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li><p>利用 <code>template</code> 标签的特性，将组件里面 <code>template</code> 内容写在标签内，然后组件的 <code>template</code> 的值填 <code>template</code> 标签的 id 。<code>template: &#39;#template-box&#39;</code></p>
+<p>Tips：<code>template</code> 标签不会被渲染出来，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"template-box"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>组件的按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span>&gt;</span>组件的a标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<pre><code>注：`template` 标签内只能有一个根节点，如果你要使用多个标签，就需要用一个标签，如上面的 div 包裹住，否则会有 `Error compiling template` 报错，提示你只能有一个根节点。</code></pre><ul>
+<li><p><code>data</code></p>
+<p>在 vue 的实例中，<code>data</code> 选项可以直接使用，但是在组件中需要以函数的方式，并且使用· <code>return</code> 来返回数据对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-tag'</span>,&#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">                msg: <span class="string">'这是组件的data中的msg'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">	template:<span class="string">'&lt;p&gt; &#123;&#123; msg &#125;&#125; &lt;/p&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>  因为组件通常是循环使用的，然后如果你组件还是直接使用 <code>data:{ msg: &#39;msg&#39;}</code> 的方式的话，这里就有一个问题，这里的 <code>data</code> 是引用类型传参，你的多个 <code>my-tag</code> 组件都是指向同一个 <code>msg</code> ，当你只想修改其中一个的时候，这里就会造成全都被修改的问题，所以需要使用 <code>return</code> ，这样每次都是一个不同地址的数据对象。</p>
+<ul>
+<li><p><code>props</code></p>
+<blockquote>
+<p>这里涉及到了组件的嵌套，我们后面再提。现在需要知道的是父组件传数据给子组件时，子组件需要由 <code>props</code> 来获取，并且<strong><code>props</code> 中的数据不能被修改！</strong>准确来说是能被修改，但是会报错，所以要修改数据，就在父组件的<code>data</code> 去修改。</p>
+</blockquote>
+</li>
+</ul>
+<p>其他的对象选项和 vue 实例中基本相同</p>
+<h2 id="组件的使用"><a href="#组件的使用" class="headerlink" title="组件的使用"></a>组件的使用</h2><blockquote>
+<p>通过标签的形式去使用，将组件名当做标签名在挂载点内使用，标签内任何内容都会被 <code>component</code> 选项覆盖。</p>
+<p><strong>注：如果组件名是 newBox 驼峰命名法，那么使用的时候标签名需要改成 <code>&lt;new-box&gt;&lt;/new-box&gt;</code>，标签也可以使用单标签哦，注意闭合。</strong></p>
+<p>props 的驼峰命名法也会有这个问题，因为在 HTML 会把大写字符解释为小写，如果使用字符串模板就不会有这个问题。所以在父组件传递参数给子组件时候需要在 HTML 内容中写例： <code>&lt;com-one :p-msg=&quot;msg&quot;&gt;&lt;/com-one&gt;</code>，但是在子组件的 <code>props</code> 中是 <code>props:[&#39;pMsg&#39;]</code>。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">new-box</span>&gt;</span><span class="tag">&lt;/<span class="name">new-box</span>&gt;</span>	//自定义组件</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="组件的嵌套"><a href="#组件的嵌套" class="headerlink" title="组件的嵌套"></a>组件的嵌套</h2><blockquote>
+<p>在某些时候，我们需要对组件进行一个嵌套，而 vue 的组件嵌套时很简单，只需要在父组件中添加子组件标签即可。</p>
+<p>这个例子涉及到了组件通信的问题，不要慌，继续往下看。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">child</span> <span class="attr">:app-msg</span>=<span class="string">"msg"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br><span class="line">     &#123;&#123; msg &#125;&#125;</span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">         el: <span class="string">'#app'</span>,</span></span><br><span class="line">        	data: &#123;</span><br><span class="line"><span class="actionscript">             msg: <span class="string">'父组件的msg'</span></span></span><br><span class="line">         &#125;,</span><br><span class="line">         components: &#123;</span><br><span class="line">             child: &#123;</span><br><span class="line">                 data() &#123;</span><br><span class="line"><span class="actionscript">                     <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">                         msg: <span class="string">'子组件的msg'</span>,</span></span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;,</span><br><span class="line"><span class="actionscript">                 props: [<span class="string">'appMsg'</span>],                   </span></span><br><span class="line"><span class="handlebars"><span class="xml">                 template: '<span class="tag">&lt;<span class="name">p</span>&gt;</span> </span><span class="template-variable">&#123;&#123; msg &#125;&#125;</span><span class="xml"> ----- 这是子组件的P标签----- </span><span class="template-variable">&#123;&#123; appMsg &#125;&#125;</span><span class="xml"> <span class="tag">&lt;/<span class="name">p</span>&gt;</span>'</span></span></span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line"> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>执行结果为：<code>子组件的msg ----- 这是子组件的P标签-----父组件的msg</code></p>
+<p><strong>注意：不要踩命名的坑，之前说到当你 <code>template</code> 不是模板字符串的方式的时候，你需要注意标签名是横杠连接写法（这里讲的俗点）。但是还需要注意的一个点就是在 <code>:app-msg=&#39;msg&#39;</code> ，尽量注意，如果你使用驼峰命名法子组件使用时候接受的也是全小写！你使用的是 - 连接时候，使用的时候就需要是 驼峰式。我也是晕的很，这个还是自己要注意，并且多多实践。模板字符串一劳永逸呀。</strong></p>
+<p>PS：自定义事件用<code>kebab-case</code>（- 链接）, 自定义属性用<code>camelCased</code>（驼峰式）</p>
+<h2 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h2><blockquote>
+<p>有时候我们可能会碰到一些情况，就是子组件要获取或者修改父组件中的数据，又或者是父组件去访问子组件中的数据。但是不能直接去访问，需要通过一些方法来实现。</p>
+</blockquote>
+<ul>
+<li><code>ref</code> 在元素上添加 <code>ref=&#39; &#39;</code>，然后可以在组件中使用方法 <code>this.$refs</code> 获取到与其相关联的组件。（不推荐）</li>
+</ul>
+<h3 id="父组件传递数据给子组件"><a href="#父组件传递数据给子组件" class="headerlink" title="父组件传递数据给子组件"></a>父组件传递数据给子组件</h3><ol>
+<li><p>在父组件中使用子组件的时候自定义一个指令，用于接受父组件传递的数据。</p>
+<p>子模板中自定义指令 <code>app-msg</code> ，<code>msg</code> 是父组件 data 中的数据，需要对应名称！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>	//父组件</span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span> <span class="attr">:app-msg</span>=<span class="string">"msg"</span> <span class="attr">ref</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span>	//子组件</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>子组件中通过 <code>props</code>选项，子组件获取到父组件传递进来的数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> components: &#123;</span><br><span class="line">      child: &#123;</span><br><span class="line">  	  props: ['app-msg'],</span><br><span class="line">  	 template: '<span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">"b"</span>&gt;</span>  ----- 这是子组件的P标签-----&#123;&#123; appMsg &#125;&#125; <span class="tag">&lt;/<span class="name">p</span>&gt;</span>'</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="子组件传递数据给父组件"><a href="#子组件传递数据给父组件" class="headerlink" title="子组件传递数据给父组件"></a>子组件传递数据给父组件</h3><blockquote>
+<p>这个方法也可以用作子组件去调用父组件的方法。</p>
+</blockquote>
+<ol>
+<li><p>同样的，使用子组件的时候，自定义一个事件，父组件传递方法名给这个事件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span>  @<span class="attr">son-fn</span>=<span class="string">"fn"</span> &gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>子组件使用 <code>@click</code> 或其他事件触发，在事件中使用 <code>this.$emit</code> 去调用父组件中的事件，同时，这里可以传子组件的参数，实现子组件传递数据给父组件。</p>
+<p>父组件中的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    fn(s) &#123;</span><br><span class="line">        <span class="keyword">this</span>.msg = s;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'父组件的fn方法'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p>   子组件通过自定义的事件获取到了父组件中的方法，在 <code>template</code> 使用 <code>@click</code>去调用：</p>
+   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            sonMsg: <span class="string">'巴拉巴拉巴拉'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    fnn() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs);</span><br><span class="line">        <span class="keyword">this</span>.$emit(<span class="string">'son-fn'</span>, <span class="keyword">this</span>.sonMsg);	<span class="comment">//重点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">props: [<span class="string">'app-msg'</span>],</span><br><span class="line">template: <span class="string">'&lt;p @click="fnn"&gt; ----- 这是子组件的P标签-----&#123;&#123; appMsg &#125;&#125; &lt;/p&gt;'</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>   this.$emit` 参数是第一个为方法名称，这个是在 DOM 中自定义的方法名，后面为传入的参数。</p>
+<h3 id="我的理解："><a href="#我的理解：" class="headerlink" title="我的理解："></a>我的理解：</h3><ul>
+<li><p>首先是父组件传递数据给子组件，因为在 <code>&lt;div id=&quot;app&quot;&gt;</code> 标签中就是在父组件中，此时你可以传入任何父组件里面的数据，而子组件自定义的指令接受到了，相当于获取到了传递的值。</p>
+</li>
+<li><p>子组件传递父组件使用的可以认为是回调函数的一种方法，然后通过传入参数去把子组件的参数传递给父组件当中。具体看图：</p>
+<p><img src="/medias/images/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1.png" alt="父子组件通信"></p>
+</li>
+</ul>
+<h2 id="兄弟组件以及复杂关系之间的通信"><a href="#兄弟组件以及复杂关系之间的通信" class="headerlink" title="兄弟组件以及复杂关系之间的通信"></a>兄弟组件以及复杂关系之间的通信</h2><h3 id="子传父，然后父传子"><a href="#子传父，然后父传子" class="headerlink" title="子传父，然后父传子"></a>子传父，然后父传子</h3><h3 id="VueX"><a href="#VueX" class="headerlink" title="VueX"></a>VueX</h3><h3 id="中央事件总线"><a href="#中央事件总线" class="headerlink" title="中央事件总线"></a>中央事件总线</h3><p>前两种在官方中很详细，所以这里重点简述一下中央事件总线，因为 <code>$on和$emit</code> 需要在同一公共的实例才能触发，所以我们可以创建一个 Vue 实例专门去放置事件</p>
+<ol>
+<li><p>创建中央 <code>var bus = new Vue()</code></p>
+</li>
+<li><p>在兄弟组件 A 中添加 <code>mounted</code>生命周期函数，挂载点挂载的时候自动开启监听，这里相当于把组件 A 的函数传递给 <code>bus</code> 中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted()&#123;</span><br><span class="line">    bus.$on(<span class="string">'fn'</span>,(val)=&gt;&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = val;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>在兄弟组件 B 中调用 <code>$emit(&#39;fn&#39;, this.name)</code>方法，并且传入组件 B 中的参数，实现兄弟组件或者复杂组件之间的通信</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="string">`&lt;div&gt;&lt;p&gt; &#123;&#123; name &#125;&#125; &lt;/p&gt;&lt;button @click="fnn"&gt;点我&lt;/button&gt;&lt;/div&gt;`</span>,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        fnn() &#123;</span><br><span class="line">            bus.$emit(<span class="string">'fn'</span>, <span class="keyword">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><blockquote>
+<p>在组件的标签内容中，填写任何内容，都会被 <code>template</code> 模板内容所覆盖，但是有时候我们需要的确实另外的效果，希望标签内的内容能够被保留，这时候就需要用到插槽。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hello</span>&gt;</span></span><br><span class="line">	这是插槽内容</span><br><span class="line"><span class="tag">&lt;/<span class="name">hello</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在 <code>template</code> 中添加 <code>&lt;slot&gt;&lt;/slot&gt;</code> 标签，组件渲染的时候，<code>&lt;slot&gt;&lt;/slot&gt;</code> 就会被替换成 “这是插槽内容”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="string">"&lt;div&gt; &lt;p&gt;这是一个p&lt;/p&gt; &lt;slot&gt;&lt;/slot&gt;  &lt;/div&gt;"</span></span><br></pre></td></tr></table></figure>
+
+<p>并且，在模板内容中的 <code>slot</code> 标签中你可以添加任意 HTML 元素，甚至是其他组件，模板标签内的内容就叫做后备内容。当你组件中没有写任何内容的时候，就会渲染出这些内容，可以理解为备用内容。新语法中 <code>template</code> 才可以使用 <code>v-slot</code> 。</p>
+<h3 id="编译作用域"><a href="#编译作用域" class="headerlink" title="编译作用域"></a>编译作用域</h3><blockquote>
+<p>当你想在插槽中使用数据的时候，你可以要注意到此时的编译作用域问题。</p>
+<p><strong>官方提示：父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。</strong></p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	 <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">hello</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">p</span>&gt;</span>你们慢慢木<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">hello</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'hello'</span>, &#123;</span><br><span class="line">           data () &#123;</span><br><span class="line">               <span class="keyword">return</span> &#123;</span><br><span class="line">                   msg: <span class="string">'666'</span></span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           template: <span class="string">`</span></span><br><span class="line"><span class="string">           &lt;div&gt;</span></span><br><span class="line"><span class="string">               &lt;slot name="up"&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">               &lt;button&gt;123&lt;/button&gt;</span></span><br><span class="line"><span class="string">               &lt;slot name="down"&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">               &lt;slot&gt;&#123;&#123; msg &#125;&#125;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">           &lt;/div&gt;</span></span><br><span class="line"><span class="string">           `</span></span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这个时候因为 msg 的使用是在子组件的 <code>template</code>中调用编译的，所以就是子组件中的 msg。相反，如果你在 <code>div#app</code> 标签中使用 <code></code> 那么编译的就是父组件中的 msg，这一点很重要，可以参考父组件向子组件传递数据，子组件通过自定义指令接受，自定义指令的等号后面就是父组件的内容。</p>
+<h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3><blockquote>
+<p>顾名思义，这是一个有着具体名称的插槽，可以认为是有钥匙和锁对应的插槽。</p>
+<p>在正常情况下，插槽内容都会被加入到插槽模板标签中，也称为默认插槽。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	 <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">hello</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-slot:cha</span>&gt;</span>你们慢慢木<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">p</span> &gt;</span>巴拉巴拉的<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">hello</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时的第一个 P 标签就被上锁了，在子组件的模板内容中直接使用 <code>slot</code> 是获取不到的，因为你没有钥匙，钥匙就是在 <code>slot</code> 标签上面添加 <code>name=&quot;cha&quot;</code>，对应插槽内容中，这就叫做具名插槽。</p>
+<h2 id="非-props-特性"><a href="#非-props-特性" class="headerlink" title="非 props 特性"></a>非 props 特性</h2><blockquote>
+<p>什么是 props ？</p>
+<p>当父组件向子组件传递数据的时候，子组件需要使用 <code>props</code> 选项去接收传递过来的数据，但是如果父组件传递下来，但是子组件并没有使用 <code>props</code> 去接收，那么这些传递过来的属性就会有一些特性。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hello</span> <span class="attr">:age</span>=<span class="string">"age"</span> <span class="attr">:name</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">hello</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'hello'</span>, &#123;</span><br><span class="line">    <span class="comment">// inheritAttrs:false,//非props特性不让你覆盖  </span></span><br><span class="line">    template: <span class="string">`&lt;div  name='qqq'&gt;</span></span><br><span class="line"><span class="string">                  &lt;p&gt; &#123;&#123; msg &#125;&#125; &#123;&#123; $attrs &#125;&#125; &lt;/p&gt;</span></span><br><span class="line"><span class="string">              &lt;/div&gt; `</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">        age: &#123;</span><br><span class="line">            type: <span class="built_in">String</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            msg: <span class="string">'这是个 msg '</span>,</span><br><span class="line">            name: <span class="string">'lemon'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是个 msg &#123; <span class="string">"name"</span>: <span class="string">"qfl"</span> &#125;   <span class="comment">-----输出的结果</span></span><br></pre></td></tr></table></figure>
+
+<p>此时的 name 就是非 props 特性：</p>
+<ul>
+<li><p>能够被 <code>$attrs</code> 获取到</p>
+</li>
+<li><p>非props特性自动写入根元素上覆盖，渲染出来的子组件标签上面的 <code>name</code>不是 qqq ，而是传递过来的父组件中的 name 值</p>
+<p>非 props 特性会覆盖子组件模板 <code>template</code>上面相同的值。</p>
+<p><strong>注：<code>class</code> 和 <code>style</code> 两大流氓不受影响，会合并。</strong></p>
+</li>
+<li><p>通过 <code>inheritAttrs:false</code>选项可以拦截不让 name 覆盖，但是还是能被 <code>$attrs</code>，这里是不受影响的。</p>
+</li>
+</ul>
+<h3 id="能做些什么呢-？"><a href="#能做些什么呢-？" class="headerlink" title="能做些什么呢 ？"></a>能做些什么呢 ？</h3><blockquote>
+<p>当我们不想传递到子组件的根元素使用，而是想子元素使用这些属性的时候，并且属性较多，我们不想一个一个在 <code>data</code> 中去 return ，繁琐而且容易遗漏出错。</p>
+<p><code>inheritAttrs:false</code>和 <code>$attrs</code> 可以实现让子组件模板里的子标签能够使用。在需要使用的地方，比如上面的子组件的 P 标签中，我们不需要一个个去写，直接 <code>v-bind=&quot;@attrs&quot;</code>，注意这里不能简写成 ：。</p>
+<p>注意： <code>inheritAttrs: false</code> 选项<strong>不会</strong>影响 <code>style</code> 和 <code>class</code> 的绑定。</p>
+</blockquote>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><h3 id="BUS-的原理是什么？"><a href="#BUS-的原理是什么？" class="headerlink" title="BUS 的原理是什么？"></a>BUS 的原理是什么？</h3><blockquote>
+<p>我的理解就是，通过中央事件管理器存放监听的方法，然后执行的时候再到这里来调用</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = &#123;&#125;;	<span class="comment">//存放各种方法</span></span><br><span class="line"><span class="keyword">var</span> bus = &#123;	<span class="comment">//中央处理</span></span><br><span class="line">    $on: <span class="function"><span class="keyword">function</span> (<span class="params">eventName, callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!fun[eventName])&#123;	<span class="comment">//不存在创建</span></span><br><span class="line">            fun[eventName] = [];</span><br><span class="line">        &#125;</span><br><span class="line">        fun[eventName].push(callback);</span><br><span class="line">    &#125;,  </span><br><span class="line">    $emit: <span class="function"><span class="keyword">function</span>(<span class="params">eventName, params</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(fun[eventName])&#123;	<span class="comment">//存在方法</span></span><br><span class="line">            fun[eventName].forEach(<span class="function"><span class="params">cb</span> =&gt;</span> &#123;</span><br><span class="line">                cb(params);	<span class="comment">//</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="v-model-的原理是怎样的呢？"><a href="#v-model-的原理是怎样的呢？" class="headerlink" title="v-model 的原理是怎样的呢？"></a>v-model 的原理是怎样的呢？</h3><blockquote>
+<p>首先是通过 <code>:value=&quot;value&quot;</code> 指令获取到 data 中的 value 值，实现单向的 value 绑定输入框内容显示。然后再通过事件 <code>@input=&quot;value=$evnet.target.value&quot;</code> 当你输入值，调用事件修改 data 中的 value 值实现双向绑定。这里需要注意的是单选框和复选框用的是 <code>@change</code>。</p>
+</blockquote>
+<h3 id="修饰符-sync-语法糖的原理"><a href="#修饰符-sync-语法糖的原理" class="headerlink" title="修饰符 sync 语法糖的原理"></a>修饰符 sync 语法糖的原理</h3><h3 id="内置组件有哪些？"><a href="#内置组件有哪些？" class="headerlink" title="内置组件有哪些？"></a>内置组件有哪些？</h3><blockquote>
+<p><code>component</code></p>
+<p><code>template</code></p>
+<p><code>slot</code></p>
+</blockquote>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2018/06/29/Vue-%E7%BB%84%E4%BB%B6/" data-id="cka9546zw0005s0ul985d8f1w" class="article-share-link">
+                                            分享
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2018/07/01/vue-router/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            Vue-router
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/06/28/vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue 基础知识2</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '823ec907ca8a419f4e85',
+      clientSecret: '2acb1f1b57621816952ad9608f29ad560637bce1',
+      repo: 'gitalk',
+      owner: 'oneQiu',
+      admin: ['oneQiu'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 oneQiu Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="oneQiu Blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">链接</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+  
+  {% include '_third-party/comments/index.swig' %}
+  <script type="text/javascript" src="./js/clicklove.js"></script>
+  <script type="text/javascript" src="./js/snow.js"></script>
+  <!--彩带2.自动飘动-->
+  
+</body>
+
+</html>

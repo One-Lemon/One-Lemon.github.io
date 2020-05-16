@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="JavaScript,Vue,React,小程序,前端,Node">
+  
+  
+    <meta name="description" content="静待一树花开，盼你叶落归来。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    小程序奇葩坑点 |
+    
+    oneQiu Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="oneQiu Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-小程序坑" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      小程序奇葩坑点
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/05/16/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9D%91/" class="article-date">
+  <time datetime="2020-05-16T04:40:28.307Z" itemprop="datePublished">2020-05-16</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
+  </div>
+
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="小程序坑点总结"><a href="#小程序坑点总结" class="headerlink" title="小程序坑点总结"></a>小程序坑点总结</h1><h2 id="背景故事"><a href="#背景故事" class="headerlink" title="背景故事"></a>背景故事</h2><blockquote>
+<p>可怜的我在产品的逼迫下，要在PC微信和PC企业微信都能完美运行小程序。四月份的时候，PC微信有了小程序面板，然后我就开始了写bug之路。</p>
+</blockquote>
+<h2 id="PC微信小程序没有首页按钮"><a href="#PC微信小程序没有首页按钮" class="headerlink" title="PC微信小程序没有首页按钮"></a>PC微信小程序没有首页按钮</h2><blockquote>
+<p>小程序在使用的时候，会根据判断路由信息是否为空，如果为空，会在导航栏自动生成一个首页的按钮。在PC微信中，小程序并不会去根据路由信息判断，</p>
+</blockquote>
+<p>触发场景：</p>
+<ul>
+<li>当你使用<code>wx.reLaunch</code>或者<code>wx.redirectTo</code>使得当前路由为空的时候，并不会出现回到首页的按钮。</li>
+<li>直接跳到非首页路由页面</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li>非首页页面添加侧边快捷操作按钮，这个可以作为一个组件，不过相对比较麻烦，而且会遮挡页面内容</li>
+<li>使用自定义导航栏，好用，但是部分场景会引发的Bug就比较扎心了，自定义导航栏另外介绍。</li>
+</ul>
+<h2 id="上传图片无效"><a href="#上传图片无效" class="headerlink" title="上传图片无效"></a>上传图片无效</h2><blockquote>
+<p>小程序上传文件我们使用<code>wx.uploadFile</code>，然后我在官方文档看到这么一句话。</p>
+<p> 将本地资源上传到服务器。客户端发起一个 HTTPS POST 请求，其中 <code>content-type</code> 为 <code>multipart/form-data</code>。 </p>
+<p>PS：正是因为这一句话，引发了我这次寻Bug之旅，企业微信联系了小程序官方问这个问题，他们表示没复现出来。</p>
+</blockquote>
+<p>触发场景：</p>
+<ul>
+<li><code>wx.uploadFile</code>中添加了<code>content-type: multipart/form-data</code></li>
+<li>在PC微信或者PC企业微信中运行小程序进行上传图片</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li>去掉<code>content-type: multipart/form-data</code></li>
+</ul>
+<h2 id="PC端运行小程序"><a href="#PC端运行小程序" class="headerlink" title="PC端运行小程序"></a>PC端运行小程序</h2><p>企业微信</p>
+<ul>
+<li>企业微信暂只支持运行正式版小程序，不能唤起体验版，包括分享体验版也是无法使用</li>
+</ul>
+<p>微信</p>
+<ul>
+<li>可以使用所有版本的小程序</li>
+</ul>
+<p>Tips：如果你要在PC微信运行开发版，通常有这几种方法</p>
+<ul>
+<li>截图二维码发在微信上，微信现在可以扫描图片二维码</li>
+<li>在微信开发者工具中打开通用设置 -&gt; 启动PC端自动预览</li>
+</ul>
+<h2 id="微信开发者工具反复横跳"><a href="#微信开发者工具反复横跳" class="headerlink" title="微信开发者工具反复横跳"></a>微信开发者工具反复横跳</h2><blockquote>
+<p>某些场景下我们可能需要手动操作返回，比如使用<code>wx.navigateBack</code>，然后在使用小程序自带的返回键会在两个页面来回跳动</p>
+</blockquote>
+<p>触发场景：</p>
+<ul>
+<li>部分页面自定义导航栏</li>
+<li>仅仅出现在微信开发者工具上面</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li>无视。。。因为，实际用起来并不会这样，只是在开发者工具上会这样，很奇怪</li>
+<li>全部使用自定义导航栏</li>
+</ul>
+<h2 id="PC小程序不支持chooseMessageFile"><a href="#PC小程序不支持chooseMessageFile" class="headerlink" title="PC小程序不支持chooseMessageFile"></a>PC小程序不支持<code>chooseMessageFile</code></h2><blockquote>
+<p>现在的小程序可以通过<code>wx.chooseMessageFile</code>去选择图片以外的各种格式的文件。辣么，问题来了，在PC上会提示<code>chooseMessageFile:fail:not supported</code>。在<code>Ststem</code>中你会发现版本号明明比这个<code>API</code>高呀。但是还是会这样，企业微信上联系了小程序助手，emm，暂时无解。</p>
+</blockquote>
+<h2 id="页面底部的input框在输入时会把自定义导航栏挤掉"><a href="#页面底部的input框在输入时会把自定义导航栏挤掉" class="headerlink" title="页面底部的input框在输入时会把自定义导航栏挤掉"></a>页面底部的<code>input</code>框在输入时会把自定义导航栏挤掉</h2><blockquote>
+<p>自定义导航栏也算页面内容，所以也是会被强制位移</p>
+</blockquote>
+<p>触发场景：</p>
+<ul>
+<li>自定义导航栏 &amp;&amp; 页面底部有输入框</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li><p>尽量避免在页面底部出现输入框</p>
+</li>
+<li><p>监听文本框<code>bindblur   bindfocus</code>事件，在聚焦时候动态改变页面的<code>padding-bottom</code></p>
+<p> <code>event.detail = { value, height }，height 为键盘高度</code></p>
+</li>
+<li><p>设置 <code>input</code> 的 <code>adjust-position</code> 为 <code>false</code>，不自动上推，用 <code>wx.pageScrollTo</code> 来自定义上推行为 </p>
+</li>
+</ul>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/05/16/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9D%91/" data-id="cka95725f0000h0ul058x53ma" class="article-share-link">
+                                            分享
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/05/31/%E6%80%9D%E8%80%83%E6%97%B6%E9%97%B4/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">思考时间</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '823ec907ca8a419f4e85',
+      clientSecret: '2acb1f1b57621816952ad9608f29ad560637bce1',
+      repo: 'gitalk',
+      owner: 'oneQiu',
+      admin: ['oneQiu'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 oneQiu Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="oneQiu Blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">链接</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+  
+  {% include '_third-party/comments/index.swig' %}
+  <script type="text/javascript" src="./js/clicklove.js"></script>
+  <script type="text/javascript" src="./js/snow.js"></script>
+  <!--彩带2.自动飘动-->
+  
+</body>
+
+</html>

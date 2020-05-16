@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="JavaScript,Vue,React,小程序,前端,Node">
+  
+  
+    <meta name="description" content="静待一树花开，盼你叶落归来。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Vuex |
+    
+    oneQiu Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="oneQiu Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Vuex" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Vuex
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2018/07/06/Vuex/" class="article-date">
+  <time datetime="2018-07-06T01:01:57.000Z" itemprop="datePublished">2018-07-06</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h1><blockquote>
+<p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong>。</p>
+<p>注意：他是一个状态管路模式，切记不要当做数据库使用</p>
+</blockquote>
+<h2 id="什么时候用vuex"><a href="#什么时候用vuex" class="headerlink" title="什么时候用vuex"></a>什么时候用vuex</h2><blockquote>
+<p>用于组件通信，通常在使用了路由之后，不同组件之间的通信， 或者组件之间通信很复杂的时候，这个时候 Vuex 就能帮你进行这个操作。</p>
+</blockquote>
+<h2 id="Vuex的操作流程"><a href="#Vuex的操作流程" class="headerlink" title="Vuex的操作流程"></a>Vuex的操作流程</h2><ol>
+<li>仓库，项目中组件上需要共享的数据放到仓库 state。</li>
+<li>组件要使用仓库中state的数据，就从仓库里面</li>
+<li>修改仓库中的state<ol>
+<li>commit  mutation</li>
+<li>派发 action -&gt; commit mutation</li>
+</ol>
+</li>
+<li>仓库中state数据发生变化，组件就会得到更新</li>
+</ol>
+<h2 id="Vuex的使用"><a href="#Vuex的使用" class="headerlink" title="Vuex的使用"></a>Vuex的使用</h2><ol>
+<li>安装vuex npm i –save vuex</li>
+<li>src/store/index.js配置实例对象</li>
+<li>main.js vue实例中配置store选项 选项的值就是 2 中的实例对象</li>
+</ol>
+<h2 id="Vue-router-实例的对象"><a href="#Vue-router-实例的对象" class="headerlink" title="Vue-router 实例的对象"></a>Vue-router 实例的对象</h2><ul>
+<li><p>state：数据存放</p>
+</li>
+<li><p>mutations：修改 state 数据的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">    setOne (state, params)&#123;	<span class="comment">//第一个参数为本地state，第二个为传入的参数，传入多个数据使用数组或者对象</span></span><br><span class="line">        state.num = params</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>modules：模块</p>
+</li>
+<li><p>getters：类似于计算属性，参数为 state</p>
+</li>
+<li><p>actions：异步操作，传入参数需要使用结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">   getCityList (&#123; state, commit &#125;) &#123;	<span class="comment">//comit为mutation方法执行</span></span><br><span class="line">     axios.get(<span class="string">'地址'</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(res)</span><br><span class="line">     &#125;)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="将仓库中的数据拿到组件中使用"><a href="#将仓库中的数据拿到组件中使用" class="headerlink" title="将仓库中的数据拿到组件中使用"></a>将仓库中的数据拿到组件中使用</h2><ul>
+<li><code>this.$store</code> 就是仓库的实例对象  直接使用不推荐</li>
+<li>通过计算属性 computed</li>
+<li>vuex提供的辅助函数 <code>mapState(&#39;仓库名&#39;,[&#39;state&#39;])</code>  key要和仓库中的相同</li>
+</ul>
+<p>为了能够将 mapstate 和自身的 computed 结合 ，推荐使用下面这种方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapActions, mapState, mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    computed: &#123;</span><br><span class="line">    ...mapState(<span class="string">'demo'</span>, [<span class="string">'demoState'</span>])</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    ...mapActions(<span class="string">'demo'</span>, [<span class="string">'demoState'</span>]),</span><br><span class="line">    ...mapMutations(<span class="string">'demo'</span>, [<span class="string">'setCurFilmType'</span>]),</span><br><span class="line">    fn () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'自定义fn'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改仓库中的数据"><a href="#修改仓库中的数据" class="headerlink" title="修改仓库中的数据"></a>修改仓库中的数据</h2><ol>
+<li>定义 <code>mutation</code> ，唯一一个可以修改 <code>state</code> 中数据的方法</li>
+<li>组件中提交 这个 <code>mutatiion</code><ol>
+<li><code>this.$strore.commit(&#39;mutatiion名字&#39;，参数)</code></li>
+<li><code>this.$store.commit({
+type: mutaion 名字
+其他参数
+})</code></li>
+<li>使用 <code>mapMutation</code> 辅助函数<h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3></li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p><code>mutation</code> 不允许异步代码，当你在 <code>mutation</code> 中使用异步函数的时候会出现数据刷新不及时。</p>
+<p>例如：你设置了一个点击发送请求，获取服务器传递进来的数据。当你点击了按钮，发送请求，并且可能在页面上也渲染出来了，但是你点击 <code>Vue</code> 工具就会发现数据没有改变，再次点击数据是上一次发送请求传回来的数据。有时候你需要对数据进行判断操作的时候，使用 <code>mutation</code> 发送请求就会出现错误。</p>
+</blockquote>
+<h3 id="actions-写异步代码"><a href="#actions-写异步代码" class="headerlink" title="actions 写异步代码"></a>actions 写异步代码</h3><blockquote>
+<p>每一个action里面都可以写异步代码，但是不能修改state里面数据，修改数据的还是 <code>mutaction</code></p>
+</blockquote>
+<h3 id="推荐在-vuex-moduels-每个模块都加上命名空间"><a href="#推荐在-vuex-moduels-每个模块都加上命名空间" class="headerlink" title="推荐在 vuex moduels 每个模块都加上命名空间"></a>推荐在 vuex moduels 每个模块都加上命名空间</h3><ol>
+<li>操作方便</li>
+<li>便于模块分类</li>
+</ol>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2018/07/06/Vuex/" data-id="cka9546zv0004s0ul194z1zo6" class="article-share-link">
+                                            分享
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2018/08/17/React%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            React基础
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/07/03/vue-%E5%B0%8F%E6%A1%88%E4%BE%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">Vue CLI</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '823ec907ca8a419f4e85',
+      clientSecret: '2acb1f1b57621816952ad9608f29ad560637bce1',
+      repo: 'gitalk',
+      owner: 'oneQiu',
+      admin: ['oneQiu'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 oneQiu Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="oneQiu Blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">链接</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+  
+  {% include '_third-party/comments/index.swig' %}
+  <script type="text/javascript" src="./js/clicklove.js"></script>
+  <script type="text/javascript" src="./js/snow.js"></script>
+  <!--彩带2.自动飘动-->
+  
+</body>
+
+</html>
